@@ -1,0 +1,51 @@
+#include "pitches.h"
+
+int switchState = 0;
+
+int melody[] = {
+  NOTE_C4, NOTE_G3, NOTE_A3, NOTE_G3, 0 , NOTE_B3, NOTE_C4
+};
+
+int noteDurations[] = {
+  4, 8, 8, 4, 4, 4, 4, 4
+};
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(2, INPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+
+  for (int thisNote = 0; thisNote < 8; thisNote++) {
+    int noteDuration = 1000 / noteDurations[thisNote];
+
+    tone(8, melody[thisNote], noteDuration);
+
+    int pauseBetweenNotes = noteDuration * 1.30;
+
+    delay(pauseBetweenNotes);
+    
+    noTone(8);
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  switchState = digitalRead(2);
+  if (switchState == LOW) {
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+
+  } else {
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+
+  }
+
+}
