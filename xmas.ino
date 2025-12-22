@@ -1,3 +1,10 @@
+/*
+
+  Light and sound code for 2025 Arduino XMAS project
+
+  Author: project516 <project516.progress139@slmail.me>
+  */
+
 #include "pitches.h"
 
 int lightSwitchState = 0;
@@ -23,8 +30,15 @@ void setup() {
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
 
+  // sound
+  pinMode(8, OUTPUT);
+
   // sound button
   pinMode(10, INPUT);
+
+  /*
+
+  // working sound code
 
   for (int thisNote = 0; thisNote < 8; thisNote++) {
     int noteDuration = 1000 / noteDurations[thisNote];
@@ -37,6 +51,13 @@ void setup() {
     
     noTone(8);
   }
+
+  */
+  
+
+  // serial console
+  Serial.begin(9600);
+
 }
 
 void loop() {
@@ -55,13 +76,26 @@ void loop() {
     digitalWrite(4, HIGH);
     digitalWrite(5, HIGH);
     digitalWrite(6, HIGH);
+    Serial.println("light button on");
 
   }
 
   // sound
-  lightSwitchState = digitalRead(10);
-  if (soundSwitchState == LOW) {
+  soundSwitchState = digitalRead(10);
+  if (soundSwitchState == HIGH) {
+    Serial.println("sound button on");
 
+    for (int thisNote = 0; thisNote < 8; thisNote++) {
+    int noteDuration = 1000 / noteDurations[thisNote];
+
+    tone(8, melody[thisNote], noteDuration);
+
+    int pauseBetweenNotes = noteDuration * 1.30;
+
+    delay(pauseBetweenNotes);
+    
+    noTone(8);
+  }
   }
 
 }
