@@ -11,11 +11,26 @@ int lightSwitchState = 0;
 int soundSwitchState = 0;
 
 int melody[] = {
-  NOTE_C4, NOTE_G3, NOTE_A3, NOTE_G3, 0 , NOTE_B3, NOTE_C4
+  NOTE_E5, NOTE_E5, NOTE_E5,  // Jingle bells
+  NOTE_E5, NOTE_E5, NOTE_E5,  // Jingle bells
+  NOTE_E5, NOTE_G5, NOTE_C5, NOTE_D5, // Jingle all
+  NOTE_E5,                    // The way
+  NOTE_F5, NOTE_F5, NOTE_F5, NOTE_F5, // Oh what fun
+  NOTE_F5, NOTE_E5, NOTE_E5, NOTE_E5, NOTE_E5, // It is to ride
+  NOTE_E5, NOTE_D5, NOTE_D5, NOTE_E5,
+  NOTE_D5, NOTE_G5            // Open sleigh
 };
 
+// Note durations: 4 = quarter note, 8 = eighth note, etc.
 int noteDurations[] = {
-  4, 8, 8, 4, 4, 4, 4, 4
+  8, 8, 4,
+  8, 8, 4,
+  8, 8, 8, 8,
+  2,
+  8, 8, 8, 8,
+  8, 8, 8, 16, 16,
+  8, 8, 8, 8,
+  4, 4
 };
 
 void setup() {
@@ -68,7 +83,7 @@ void loop() {
 }
 
 void playSound() {
-  for (int thisNote = 0; thisNote < 7; thisNote++) {
+  for (int thisNote = 0; thisNote < 26; thisNote++) {
     int noteDuration = 1000 / noteDurations[thisNote];
     tone(8, melody[thisNote], noteDuration);
     int pauseBetweenNotes = noteDuration * 1.30;
