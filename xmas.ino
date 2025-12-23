@@ -102,3 +102,15 @@ void playSound() {
     noTone(8);
   }
 }
+
+void lightShow() {
+  // turn off lights
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  
+}
