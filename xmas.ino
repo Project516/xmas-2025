@@ -36,25 +36,6 @@ void setup() {
   // sound button
   pinMode(10, INPUT);
 
-  /*
-
-  // working sound code
-
-  for (int thisNote = 0; thisNote < 8; thisNote++) {
-    int noteDuration = 1000 / noteDurations[thisNote];
-
-    tone(8, melody[thisNote], noteDuration);
-
-    int pauseBetweenNotes = noteDuration * 1.30;
-
-    delay(pauseBetweenNotes);
-    
-    noTone(8);
-  }
-
-  */
-  
-
   // serial console
   Serial.begin(9600);
 
@@ -82,20 +63,18 @@ void loop() {
 
   // sound
   soundSwitchState = digitalRead(10);
+  
   if (soundSwitchState == HIGH) {
     Serial.println("sound button on");
 
-    for (int thisNote = 0; thisNote < 8; thisNote++) {
-    int noteDuration = 1000 / noteDurations[thisNote];
+      for (int thisNote = 0; thisNote < 8; thisNote++) {
 
-    tone(8, melody[thisNote], noteDuration);
+        int noteDuration = 1000 / noteDurations[thisNote];
+        tone(8, melody[thisNote], noteDuration);
+        int pauseBetweenNotes = noteDuration * 1.30;
+        delay(pauseBetweenNotes);
+        noTone(8);
 
-    int pauseBetweenNotes = noteDuration * 1.30;
-
-    delay(pauseBetweenNotes);
-    
-    noTone(8);
+    }
   }
-  }
-
 }
