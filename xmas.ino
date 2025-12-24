@@ -80,12 +80,12 @@ void loop() {
     digitalWrite(5, LOW);
     digitalWrite(6, LOW);
   } else {
-    /*digitalWrite(3, HIGH);
+    digitalWrite(3, HIGH);
     digitalWrite(4, HIGH);
     digitalWrite(5, HIGH);
-    digitalWrite(6, HIGH);*/
+    digitalWrite(6, HIGH);
 
-    lightShow();
+    //lightShow();
   }
 
   // sound
@@ -114,6 +114,10 @@ void lightShow() {
 
   digitalWrite(3, HIGH);
   digitalWrite(5, HIGH);
+  delay(1000);
+  digitalWrite(3, LOW);
+  digitalWrite(5, LOW);
+  
   digitalWrite(4, HIGH);
   digitalWrite(6, HIGH);
   
